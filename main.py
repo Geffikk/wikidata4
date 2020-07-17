@@ -4,9 +4,12 @@ import argparse
 from colorama import Fore
 from os import walk
 import time
+import rules
+import re
 
-global data, args
+global data, args, name
 data = []
+name = None
 args = None
 
 model_path = './model/czech-pdt-ud-2.5-191206.udpipe'
@@ -24,9 +27,15 @@ class ArgumentParser:
 
         return args
 
+    def remove_text_in_backets(self, sentence):
+        regex = re.sub(r'\([^)]*\)', '', sentence)
+        return regex
+
     def store_descprition(self, args):
 
         file = None
+
+        name = re.search('[.]\w+', args.inputFile)
 
         # prepínač pre jeden subor
         if not args.directory:
@@ -39,7 +48,9 @@ class ArgumentParser:
             if file:
                 for sentence in file:
                     sentence = sentence.split('\t')
-                    data.append(sentence[4])
+                    sentence = self.remove_text_in_backets(sentence[4])
+                    # Ulož popis zo súboru do listu
+                    data.append(sentence)
 
         # prepínač pre zložku
         else:
@@ -55,13 +66,14 @@ class ArgumentParser:
                     file = open(f'{args.inputFile}/{file}', encoding='utf-8')
                     for sentence in file:
                         sentence = sentence.split('\t')
+                        sentence = self.remove_text_in_backets(sentence[4])
                         # Ulož popis zo súboru do listu
-                        data.append(sentence[4])
+                        data.append(sentence)
             else:
                 sys.stderr.write('V zložke sa nenachádzajú žiadne súbory na spracovanie')
                 exit(-1)
 
-        return data
+        return data, name
 
 class ProcessNLP:
 
@@ -97,19 +109,20 @@ class ProcessNLP:
         processed_data = 1      # spracované data
         treshhold = 0
 
+        iterator = 0
         # Spracovanie popiskov
         for sentence in data:
 
             # Postup spracovania
             result = processed_data / len(data)
 
-            if treshhold > 10:
+            if treshhold > 15:
                 break
 
             # Spracovanie
             if result*100 > treshhold:
                 sys.stderr.write(f'{Fore.WHITE}#{Fore.RESET}')
-                treshhold += 5
+                treshhold += 2
 
             # Parsovanie pomocou NLP knižnice
             processed = self.pipeline.process(sentence, self.error)
@@ -124,12 +137,18 @@ class ProcessNLP:
             # Parsovanie jednotlivých popiskov
             processed_by_line = processed.split('\n')
 
+            if len(processed_by_line) > 12:
+                pass
+                #for item in processed_by_line:
+                    #print(item)
+
             sentence_list = []
             zarazka = 0
 
             for line in processed_by_line:
                 word_list = line.split('\t')
                 word_list = word_list[0:4]
+                #word_list = self.remove_text_in_backets(word_list)
                 if zarazka >= 4:
                     sentence_list.append(word_list)
                 zarazka += 1
@@ -176,16 +195,20 @@ class ProcessNLP:
 
 parser = ArgumentParser()
 args = parser.parse_arguments()
-parser.store_descprition(args)
+data, name = parser.store_descprition(args)
 
 description = ProcessNLP()
 description.check_version()
 
 file_list = description.process_description()
 
+proccesor = rules.Proccesor(file_list, name)
+proccesor.identify()
+
 page = 0
 text_flag = True
 
+""""
 while True:
     if text_flag:
         give_new = input("Press enter for next description / Write for quit for end: ")
@@ -195,11 +218,12 @@ while True:
 
     if give_new == '':
         print(file_list[page])
+        print(len(file_list[page]))
         page += 1
     elif give_new == 'quit':
         break
     else:
-        sys.stderr.write("Press for next description")
+        sys.stderr.write("Press for next description")"""
 
 """ 
 - Jednoslovne popisky mozem rovno zaradit do nejakek kategorie.
