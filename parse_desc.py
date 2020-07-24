@@ -7,10 +7,12 @@ import time
 import rules
 import re
 
-global data, args, name
-data = []
-name = None
-args = None
+global data, args
+data = [] # descriptions data
+informations = [] # All informations about output wikidata entity
+num_of_sentences = []
+
+args = None # arguments
 
 model_path = './model/czech-pdt-ud-2.5-191206.udpipe'
 
@@ -22,23 +24,23 @@ class ArgumentParser:
 
         parser = argparse.ArgumentParser(description='Identifikácia definičného slova z popisu')
         parser.add_argument('-iF', '--inputFile', type=str, help='Path to data / if -d then path to dir')
-        parser.add_argument('-d', '--directory', action='store_true', help='Directory with data')
+        parser.add_argument('-d', '--directory', action='store_true', help='swticher: if (-iF) is directory then set -d')
         args = parser.parse_args()
-
         return args
 
     def remove_text_in_backets(self, sentence):
+
         regex = re.sub(r'\([^)]*\)', '', sentence)
         return regex
 
     def store_descprition(self, args):
 
         file = None
-
-        name = re.search('[.]\w+', args.inputFile)
+        entity = []
 
         # prepínač pre jeden subor
         if not args.directory:
+            entity = re.search('[.]\w+', args.inputFile).group()
             try:
                 file = open(f'./data/{args.inputFile}', encoding='utf8')
             except:
@@ -48,9 +50,13 @@ class ArgumentParser:
             if file:
                 for sentence in file:
                     sentence = sentence.split('\t')
-                    sentence = self.remove_text_in_backets(sentence[4])
-                    # Ulož popis zo súboru do listu
-                    data.append(sentence)
+                    sentence = sentence[:5]
+                    del sentence[2]
+                    desc = self.remove_text_in_backets(sentence[3])
+                    sentence[3] = desc
+                    # Ulož informacie zo súboru do listu
+                    informations.append(sentence)
+
 
         # prepínač pre zložku
         else:
@@ -61,19 +67,29 @@ class ArgumentParser:
                 files.extend(filenames)
                 break
 
+            for text in filenames:
+                entity.append(re.search('[.]\w+', text).group())
+
             if files:
                 for file in files:
                     file = open(f'{args.inputFile}/{file}', encoding='utf-8')
+                    num = 0
                     for sentence in file:
+
                         sentence = sentence.split('\t')
-                        sentence = self.remove_text_in_backets(sentence[4])
-                        # Ulož popis zo súboru do listu
-                        data.append(sentence)
+                        sentence = sentence[:5]
+                        del sentence[2]
+                        desc = self.remove_text_in_backets(sentence[3])
+                        sentence[3] = desc
+                        # Ulož informacie zo súboru do listu
+                        informations.append(sentence)
+                        num += 1
+                    num_of_sentences.append(num)
             else:
                 sys.stderr.write('V zložke sa nenachádzajú žiadne súbory na spracovanie')
                 exit(-1)
 
-        return data, name
+        return entity, informations, num_of_sentences
 
 class ProcessNLP:
 
@@ -85,17 +101,17 @@ class ProcessNLP:
         self.error = None
 
     """ Spracovanie popisu do potrebného tvaru / Určenie slovného druhu """
-    def process_description(self):
+    def process_description(self, data):
 
         # Náčíta model pre český jazyk
-        sys.stderr.write(f'{Fore.GREEN}Loading model: ')
+        sys.stderr.write(f'{Fore.LIGHTGREEN_EX}Loading model: ')
         model = ufal.udpipe.Model.load(model_path)
 
         if not model:
             sys.stderr.write(f"{Fore.RED}Cannot load model from file '%s'\n" % model_path)
             sys.exit(1)
 
-        sys.stderr.write(f'{Fore.GREEN}-> done\n{Fore.RESET}')
+        sys.stderr.write(f'{Fore.LIGHTGREEN_EX}DONE\n{Fore.RESET}')
         time.sleep(1)
 
         # Načíta pipeline
@@ -103,11 +119,11 @@ class ProcessNLP:
         self.error = ufal.udpipe.ProcessingError()
 
         # Začína spracovávanie jednotlivých popiskov
-        sys.stderr.write(f'{Fore.GREEN}Process description:{Fore.RESET} ')
+        sys.stderr.write(f'{Fore.LIGHTGREEN_EX}Process description:{Fore.RESET} ')
 
-        file_list = []          # list spracovaných popiskov
+        desc_data = []          # list spracovaných popiskov
         processed_data = 1      # spracované data
-        treshhold = 0
+        treshhold = 0           # Bar of loading
 
         iterator = 0
         # Spracovanie popiskov
@@ -116,13 +132,13 @@ class ProcessNLP:
             # Postup spracovania
             result = processed_data / len(data)
 
-            if treshhold > 15:
+            if treshhold >= 150:
                 break
 
             # Spracovanie
             if result*100 > treshhold:
                 sys.stderr.write(f'{Fore.WHITE}#{Fore.RESET}')
-                treshhold += 2
+                treshhold += 5
 
             # Parsovanie pomocou NLP knižnice
             processed = self.pipeline.process(sentence, self.error)
@@ -136,13 +152,7 @@ class ProcessNLP:
 
             # Parsovanie jednotlivých popiskov
             processed_by_line = processed.split('\n')
-
-            if len(processed_by_line) > 12:
-                pass
-                #for item in processed_by_line:
-                    #print(item)
-
-            sentence_list = []
+            sentence_list = []  # temporary list
             zarazka = 0
 
             for line in processed_by_line:
@@ -161,26 +171,15 @@ class ProcessNLP:
                     break
 
             # List na uloženie jednotlivých rozprasovaných popiskov so slovnými druhmi
-            file_list.append(sentence_list)
+            desc_data.append(sentence_list)
             processed_data += 1
 
-        time.sleep(1)
-        sys.stderr.write(f' {Fore.GREEN}-> done')
+        # Processing descriptions
+        sys.stderr.write(f' {Fore.LIGHTGREEN_EX}|')
+        time.sleep(2)
+        sys.stderr.write(f' {Fore.LIGHTGREEN_EX}DONE\n{Fore.RESET}')
 
-        print('\n\n')
-
-        # Odstranenie zakladneho tvaru
-        """
-        for n in range(0, len(file_list)):
-            for n2 in range(0, len(file_list[n])):
-                try:
-                    del file_list[n][n2][2]
-                except:
-                    pass
-                print(file_list[n][n2])
-        """
-
-        return file_list
+        return desc_data
 
     # Kontrola verzie
     def check_version(self):
@@ -192,40 +191,38 @@ class ProcessNLP:
             sys.stdin = codecs.getreader(encoding)(sys.stdin)
             sys.stdout = codecs.getwriter(encoding)(sys.stdout)
 
+def start_analyzing():
+    parser = ArgumentParser()
+    args = parser.parse_arguments()
+    entity, informations, num_of_sentences = parser.store_descprition(args)
 
-parser = ArgumentParser()
-args = parser.parse_arguments()
-data, name = parser.store_descprition(args)
+    # Append all processed data to global data list
+    data.clear()
+    for desc in informations:
+        data.append(desc[3])
 
-description = ProcessNLP()
-description.check_version()
+    description = ProcessNLP()
+    description.check_version() # Check version of Python
+    desc_data = description.process_description(data) # Proccess descriptions over ufal udpipe
 
-file_list = description.process_description()
+    proccesor = rules.Proccesor(desc_data, entity, informations, num_of_sentences) # Initialize proccessor
 
-proccesor = rules.Proccesor(file_list, name)
-proccesor.identify()
-
-page = 0
-text_flag = True
-
-""""
-while True:
-    if text_flag:
-        give_new = input("Press enter for next description / Write for quit for end: ")
-        text_flag = False
+    # Start searching definitioun words
+    if proccesor.identify():
+        return True
     else:
-        give_new = input()
-
-    if give_new == '':
-        print(file_list[page])
-        print(len(file_list[page]))
-        page += 1
-    elif give_new == 'quit':
-        break
-    else:
-        sys.stderr.write("Press for next description")"""
+        sys.stderr.write("Nepodarilo sa spracovať popisky !")
+        exit(-1)
 
 """ 
-- Jednoslovne popisky mozem rovno zaradit do nejakek kategorie.
-- Vsetky slova v zatvorkach odstranit.
-"""
+    - Jednoslovne popisky mozem rovno zaradit do nejakek kategorie.
+    - Vsetky slova v zatvorkach odstranit.
+    """
+
+if __name__ == "__main__":
+    if start_analyzing():
+        sys.stdout.write(f'{Fore.BLUE}Searching successful, look on results in output files!')
+        exit(0)
+    else:
+        sys.stderr.write("Nepodarilo sa spracovať popisky !")
+        exit(-1)
