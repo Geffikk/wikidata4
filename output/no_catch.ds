@@ -1,0 +1,51 @@
+'1', 'Německo', 'Německo', 'PROPN'], ['2', 'v', 'v', 'ADP'], ['3', 'období', 'období', 'NOUN'], ['4', 'vlády', 'vláda', 'NOUN'], ['5', 'nacismu', 'nacismus', 'NOUN'], ['6', 'v', 'v', 'ADP'], ['7', 'letech', 'rok', 'NOUN'], ['8', '1933', '1933', 'NUM'], ['9', 'až', 'až', 'CCONJ'], ['10', '1945', '1945', 'NUM'
+'1', 'město', 'město', 'NOUN'], ['2', 'ma', 'ma', 'CCONJ'], ['3', 'Slovensku', 'Slovensko', 'PROPN'
+'1', 'město', 'město', 'NOUN'], ['2', 'ma', 'ma', 'CCONJ'], ['3', 'Slovensku', 'Slovensko', 'PROPN'
+'1', 'Limburg', 'Limburg', 'PROPN'], ['2', ',', ',', 'PUNCT'], ['3', 'Nizozemsko', 'Nizozemsko', 'PROPN'
+'1', 'jezírko', 'jezírko', 'ADV'], ['2', 'v', 'v', 'ADP'], ['3', 'Hostivaři', 'Hostivař', 'PROPN'], ['4', 'u', 'u', 'ADP'], ['5', 'hranic', 'hranice', 'NOUN'], ['6', 'se', 's', 'ADP'], ['7', 'Strašnicemi', 'Strašnice', 'NOUN'], ['8', 'v', 'v', 'ADP'], ['9', 'Praze', 'Praha', 'PROPN'
+'1', 'část', 'část', 'NOUN'], ['2', 'Litomyšli', 'Litomyšl', 'VERB'
+'1', 'turisticky', 'turisticky', 'ADV'], ['2', 'populární', 'populární', 'ADJ'], ['3', 'ostrov', 'ostrov', 'NOUN'], ['4', 'v', 'v', 'ADP'], ['5', 'Indonésii', 'Indonésie', 'PROPN'
+'1', 'město', 'město', 'NOUN'], ['2', 'ma', 'ma', 'CCONJ'], ['3', 'Slovensku', 'Slovensko', 'PROPN'
+'1', 'jihoamerická', 'jihoamerická', 'ADJ'], ['2', 'poušť', 'poušť', 'PROPN'
+'1', 'malý', 'malý', 'ADJ'], ['2', 'vulkanický', 'vulkanický', 'ADJ'], ['3', 'ostrov', 'ostrov', 'NOUN'], ['4', 'nedaleko', 'nedaleko', 'ADV'], ['5', 'Sicílie', 'Sicílie', 'PROPN'
+'1', 'jedna', 'jeden', 'NUM'], ['2', 'ze', 'z', 'ADP'], ['3', 'čtyř', 'čtyři', 'NUM'], ['4', 'mohyl', 'mohyla', 'NOUN'], ['5', 'v', 'v', 'ADP'], ['6', 'Krakově', 'Krakov', 'PROPN'
+'1', 'v', 'v', 'ADP'], ['2', 'Jánošíkových', 'Jánošíkový', 'ADJ'], ['3', 'dierách', 'diera', 'NOUN'
+'1', 'základní', 'základní', 'ADJ'], ['2', 'sídelní', 'sídelní', 'ADJ'], ['3', 'jednotka', 'jednotka', 'NOUN'], ['4', 'obce', 'obec', 'NOUN'], ['5', 'Bobrová', 'Bobrová', 'PROPN'
+'1', 'tři', 'tři', 'NUM'], ['2', 'vodopády', 'vodopád', 'NOUN'], ['3', 'nacházející', 'nacházející', 'ADJ'], ['4', 'se', 'se', 'PRON'], ['5', 'na', 'na', 'ADP'], ['6', 'hranici', 'hranice', 'NOUN'], ['7', 'mezi', 'mezi', 'ADP'], ['8', 'USA', 'USA', 'PROPN'], ['9', 'a', 'a', 'CCONJ'], ['10', 'Kanadou', 'Kanada', 'PROPN'
+'1', 'Tatarstán', 'Tatarstán', 'PROPN'], ['2', ',', ',', 'PUNCT'], ['3', 'Rusko', 'Rusko', 'PROPN'
+'1', 'Berkeley', 'Berkeley', 'PROPN'], ['2', ',', ',', 'PUNCT'], ['3', 'Gloucestershire', 'Gloucestershire', 'PROPN'
+'1', 'největší', 'velký', 'ADJ'], ['2', 'z', 'z', 'ADP'], ['3', 'ostrovů', 'ostrov', 'NOUN'], ['4', 'Bay', 'Bay', 'PROPN'], ['5', 'Islands', 'Island', 'PROPN'
+'1', 'největší', 'velký', 'ADJ'], ['2', 'a', 'a', 'CCONJ'], ['3', 'nejsilnější', 'silný', 'ADJ'], ['4', 'srbské', 'srbský', 'ADJ'], ['5', 'knížectví', 'knížectví', 'NOUN'
+'1', 'návrší', 'návrší', 'VERB'], ['2', 'poblíž', 'poblíž', 'ADP'], ['3', 'Brna', 'Brno', 'PROPN'
+'1', 'evropsky', 'evropsky', 'ADV'], ['2', 'významná', 'významný', 'ADJ'], ['3', 'lokalita', 'lokalita', 'NOUN'], ['4', 'v', 'v', 'ADP'], ['5', 'okrese', 'okres', 'NOUN'], ['6', 'Cheb', 'Cheb', 'PROPN'
+'1', 'Společenství', 'společenství', 'NOUN'], ['2', 'států', 'stát', 'NOUN'
+'1', 'de', 'de', 'ADP'], ['2', 'facto', 'facto', 'NOUN'], ['3', 'hlavní', 'hlavní', 'ADJ'], ['4', 'město', 'město', 'NOUN'], ['5', 'Bolívie', 'Bolívie', 'PROPN'
+'1', 'nádrž', 'nádrž', 'CCONJ'], ['2', 'v', 'v', 'ADP'], ['3', 'Kolumbii', 'Kolumbie', 'PROPN'
+'1', 'Hesar', 'Hesar', 'PROPN'], ['2', '-', '-', 'PUNCT'], ['3', 'e', 'e', 'NOUN'], ['4', 'Qujeh', 'Qujeh', 'PROPN'], ['5', 'Baghi', 'Baghi', 'PROPN'
+'1', 'jezírko', 'jezírko', 'ADV'], ['2', 'v', 'v', 'ADP'], ['3', 'Hlubočepech', 'Hlubočepy', 'NOUN'], ['4', 'v', 'v', 'ADP'], ['5', 'Praze', 'Praha', 'PROPN'
+'1', 'největší', 'velký', 'ADJ'], ['2', 'z', 'z', 'ADP'], ['3', 'baleárských', 'baleárský', 'ADJ'], ['4', 'ostrovů', 'ostrov', 'NOUN'
+'1', 'nejvyšší', 'vysoký', 'ADJ'], ['2', 'hora', 'hora', 'NOUN'], ['3', 'Bosny', 'Bosna', 'PROPN'], ['4', 'a', 'a', 'CCONJ'], ['5', 'Hercegoviny', 'Hercegovina', 'PROPN'
+'1', 'třetí', 'třetí', 'ADJ'], ['2', 'nejvyšší', 'vysoký', 'ADJ'], ['3', 'hora', 'hora', 'NOUN'], ['4', 'Moravskoslezských', 'Moravskoslezský', 'ADJ'], ['5', 'Beskyd', 'Beskydy', 'PROPN'
+'1', 'selo', 'sít', 'VERB'], ['2', 'v', 'v', 'ADP'], ['3', 'Usť', 'Usť', 'PART'], ['4', '-', '-', 'PUNCT'], ['5', 'Udinském', 'Udinský', 'ADJ'], ['6', 'rajónu', 'rajón', 'NOUN'], ['7', 'v', 'v', 'ADP'], ['8', 'Irkutské', 'Irkutský', 'ADJ'], ['9', 'oblasti', 'oblast', 'NOUN'
+'1', 'částečně', 'částečně', 'ADV'], ['2', 'uznaný', 'uznaný', 'ADJ'], ['3', 'stát', 'stát', 'NOUN'], ['4', 'v', 'v', 'ADP'], ['5', 'jihovýchodní', 'jihovýchodní', 'ADJ'], ['6', 'Evropě', 'Evropa', 'PROPN'
+'1', 'Hlavní', 'hlavní', 'ADJ'], ['2', 'a', 'a', 'CCONJ'], ['3', 'největší', 'velký', 'ADJ'], ['4', 'ugandské', 'ugandský', 'ADJ'], ['5', 'město', 'město', 'NOUN'
+'1', 'přísně', 'přísně', 'ADV'], ['2', 'chráněné', 'chráněný', 'ADJ'], ['3', 'území', 'území', 'NOUN'
+'1', 'jeden', 'jeden', 'NUM'], ['2', 'z', 'z', 'ADP'], ['3', 'Kapverdských', 'Kapverdský', 'ADJ'], ['4', 'ostrovů', 'ostrov', 'NOUN'
+'1', 'Nižnij', 'Nižnij', 'PROPN'], ['2', 'Čirjurt', 'Čirjurt', 'PROPN'
+'1', 'ledovcové', 'ledovcový', 'NOUN'], ['2', 'jezírko', 'jezírko', 'ADV'], ['3', 'v', 'v', 'ADP'], ['4', 'Krkonoších', 'Krkonoše', 'PROPN'
+'1', 'slepé', 'slepý', 'ADJ'], ['2', 'rameno', 'rameno', 'NOUN'], ['1', 'Dyje', 'Dýt', 'NOUN'
+'1', 'obytná', 'obytný', 'ADJ'], ['2', 'a', 'a', 'CCONJ'], ['3', 'administrativní', 'administrativní', 'ADJ'], ['4', 'čtvrť', 'čtvrť', 'NOUN'], ['5', 'v', 'v', 'ADP'], ['6', 'Bratislavě', 'Bratislava', 'PROPN'
+'1', 'hlavní', 'hlavní', 'ADJ'], ['2', 'město', 'město', 'NOUN'], ['3', 'Bosny', 'Bosna', 'PROPN'], ['4', 'a', 'a', 'CCONJ'], ['5', 'Hercegoviny', 'Hercegovina', 'PROPN'
+'1', 'La', 'Le', 'ADJ'], ['2', 'Réunion', 'Réunion', 'PROPN'], ['3', ',', ',', 'PUNCT'], ['4', 'Francie', 'Francie', 'PROPN'
+'1', 'největší', 'velký', 'ADJ'], ['2', 'a', 'a', 'CCONJ'], ['3', 'nejvýchodnější', 'východní', 'ADJ'], ['4', 'ostrov', 'ostrov', 'NOUN'], ['5', 'Lofot', 'Lofot', 'PROPN'
+'1', '5', '5', 'NUM'], ['2', '.', '.', 'PUNCT'], ['3', 'nejvyšší', 'vysoký', 'ADJ'], ['4', 'hora', 'hora', 'NOUN'], ['5', 'v', 'v', 'ADP'], ['6', 'Turecku', 'Turecko', 'PROPN'
+'1', 'stát', 'stát', 'VERB'], ['2', 'na', 'na', 'ADP'], ['3', 'rozhraní', 'rozhraní', 'NOUN'], ['4', 'Evropy', 'Evropa', 'PROPN'], ['5', 'a', 'a', 'CCONJ'], ['6', 'Asie', 'Asie', 'PROPN'
+'1', 'největší', 'velký', 'ADJ'], ['2', 'a', 'a', 'CCONJ'], ['3', 'hlavní', 'hlavní', 'ADJ'], ['4', 'město', 'město', 'NOUN'], ['5', 'Černé', 'černý', 'ADJ'], ['6', 'Hory', 'hora', 'NOUN'
+'1', 'Kanton', 'kanton', 'PROPN'], ['2', 'Curych', 'Curych', 'PROPN'], ['3', ',', ',', 'PUNCT'], ['4', 'Švýcarsko', 'Švýcarsko', 'PROPN'
+'1', 'Ort', 'Ort', 'PROPN'], ['2', 'in', 'in', 'ADP'], ['3', 'Kroatien', 'Kroatien', 'PROPN'
+'1', 'Kluž', 'Kluž', 'NOUN'], ['2', ',', ',', 'PUNCT'], ['3', 'Rumunsko', 'Rumunsko', 'PROPN'
+'1', 'Ostrov', 'ostrov', 'PROPN'], ['2', 'v', 'v', 'ADP'], ['3', 'USA', 'USA', 'PROPN'
+'1', 'egyptsko', 'egyptský', 'ADJ'], ['2', '-', '-', 'PUNCT'], ['3', 'libyjská', 'libyjský', 'ADJ'], ['4', 'písečná', 'písečný', 'ADJ'], ['5', 'poušť', 'poušť', 'PROPN'
+'1', 'vesnive', 'vesnive', 'ADV'], ['2', 've', 'v', 'ADP'], ['3', 'Walesu', 'Wales', 'PROPN'
+'1', 'základní', 'základní', 'ADJ'], ['2', 'sídelní', 'sídelní', 'ADJ'], ['3', 'jednotka', 'jednotka', 'NOUN'], ['4', 'obce', 'obec', 'NOUN'], ['5', 'Bobrová', 'Bobrová', 'PROPN'
+
